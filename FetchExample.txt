@@ -1,0 +1,35 @@
+// LLOGIN
+fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: 'username',
+        password: 'password',
+      }),
+    }).then(res => res.json()).then(res => console.log(res.access_token))
+
+// POST data:
+var data = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    phone: '123-456-7890'
+  };
+fetch('http://localhost:3000/api/v1/add-user', {
+      method: 'POST', // Указываем метод запроса POST
+      headers: {
+          'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json', // Устанавливаем заголовок для JSON
+        'Authorization': `Bearer ${res.access_token}`
+      },
+      body: JSON.stringify(data) // Преобразуем данные в JSON-формат
+    }).then(res => console.log(res.text()))
+
+// Get data
+fetch('http://localhost:3000/api/v1/get-user/1', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${res.access_token}`
+      },
+}).then(res => res.json()).then(res => console.log(res))
